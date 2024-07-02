@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Renumeração</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <h2>Cálculo de Custo por Hora</h2>
+    <div>
+        <label for="monthlyCosts">Custos Mensais:</label>
+        <input type="number" id="monthlyCosts" placeholder="Insira seus custos mensais" aria-label="Custos Mensais">
+
+        <label for="desiredSalary">Salário Líquido Desejado por Mês:</label>
+        <input type="number" id="desiredSalary" placeholder="Insira o salário desejado" aria-label="Salário Líquido Desejado por Mês">
+
+        <label for="hoursPerDay">Horas Trabalhadas por Dia: <span id="hoursPerDayValue">8 horas</span></label>
+        <input type="range" id="hoursPerDay" min="1" max="24" value="8" aria-label="Horas Trabalhadas por Dia">
+
+        <label for="daysPerWeek">Dias Trabalhados por Semana: <span id="daysPerWeekValue">5 dias</span></label>
+        <input type="range" id="daysPerWeek" min="1" max="7" value="5" aria-label="Dias Trabalhados por Semana">
+
+        <label for="vacationWeeks">Semanas de Férias por Ano: <span id="vacationWeeksValue">4 semanas</span></label>
+        <input type="range" id="vacationWeeks" min="0" max="52" value="4" aria-label="Semanas de Férias por Ano">
+
+        <button class="button-icon" onclick="calculateHourlyRate()">
+            <i class="fas fa-calculator"></i>
+            Calcular Custo por Hora
+        </button>
+        <h3>Custo por Hora: <span id="hourlyRateResult">-</span></h3>
+    </div>
+
+    <h2>Cálculo do Custo do Projeto</h2>
+    <div>
+        <label for="projectHoursPerDay">Horas Trabalhadas por Dia no Projeto: <span id="projectHoursPerDayValue">8 horas</span></label>
+        <input type="range" id="projectHoursPerDay" min="1" max="24" value="8" aria-label="Horas Trabalhadas por Dia no Projeto">
+
+        <label for="timeOption">Selecione a Duração:</label>
+        <select id="timeOption" onchange="updateDurationSlider()">
+            <option value="days">Dias</option>
+            <option value="months">Meses</option>
+        </select>
+
+        <label id="durationLabel" for="projectDuration">Duração do Projeto em Dias:</label>
+        <input type="range" id="projectDuration" min="1" max="30" value="5" aria-label="Duração do Projeto">
+        <span id="projectDurationValue">5 dias</span>
+
+        <button class="button-icon" onclick="calculateProjectCost()">
+            <i class="fas fa-money-bill-wave"></i>
+            Calcular Custo do Projeto
+        </button>
+        <h3>Custo do Projeto: <span id="projectCostResult">-</span></h3>
+    </div>
+
+    <script src="scripts.js"></script>
+    <button class="button-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+</body>
+</html>
